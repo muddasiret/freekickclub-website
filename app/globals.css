@@ -2,6 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+@keyframes slide {
+  0% {
+    transform: translateX(300%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-slide {
+  display: inline-block;
+  white-space: nowrap;
+  animation: slide 15s linear infinite;
+}
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -24,10 +39,25 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+  min-height: 100vh;
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+.news-card {
+  overflow: hidden; /* Prevent the image from overflowing */
+  position: relative;
+}
+
+.news-card img {
+  transition: transform 0.3s ease;
+  width: 200px; /* Smooth transition */
+}
+
+.news-card:hover img {
+  transform: scale(1.02); /* Zoom in the image */
 }
