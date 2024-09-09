@@ -10,7 +10,7 @@ export default async function Home() {
   const news = await getNews();
   log(news);
   return (
-    <main className="container mx-auto py-8 px-10 w-1/2">
+    <main className="container mx-auto py-8 px-10 lg:w-1/2">
       <h1 className="text-3xl font-bold mb-6">Latest News</h1>
       <News items={news?.data} />
     </main>

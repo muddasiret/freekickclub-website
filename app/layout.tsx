@@ -3,6 +3,16 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Image from "next/image";
 import Link from "next/link";
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@/components/ui/drawer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,13 +28,13 @@ export default function RootLayout({
 }>) {
   const Header = () => {
     const links = [
-      { name: "Premier League", href: "/premier-league" },
-      { name: "La Liga", href: "/laliga" },
-      { name: "Champtions league", href: "/cl" },
-      { name: "ISL", href: "/isl" },
-      { name: "Kerala Super League", href: "/kerala-super-league" },
-      { name: "I-League", href: "/i-league" },
-      { name: "International", href: "/international" },
+      { name: "Premier League", href: "/news/premier-league" },
+      { name: "La Liga", href: "/news/laliga" },
+      { name: "Champtions league", href: "/news/champions-league" },
+      { name: "ISL", href: "/news/isl" },
+      { name: "Kerala Super League", href: "/news/kerala-super-league" },
+      { name: "I-League", href: "/news/i-league" },
+      { name: "International", href: "/news/international" },
     ];
 
     return (
@@ -42,7 +52,7 @@ export default function RootLayout({
             priority
           />
         </Link>
-        <nav className="mx-4">
+        <nav className="mx-4 hidden lg:block">
           <ul className="flex justify-center space-x-4">
             {links.map((link) => (
               <li key={link.name} className="px-1">
@@ -56,6 +66,41 @@ export default function RootLayout({
             ))}
           </ul>
         </nav>
+        <div className="lg:hidden">
+          <Drawer>
+            <DrawerTrigger>
+              <svg
+                className="hamburgerIcon"
+                xmlns="http://www.w3.org/2000/svg"
+                height="24"
+                viewBox="0 0 24 24"
+                width="24"
+              >
+                <path d="M0 0h24v24H0z" fill="none"></path>
+                <path
+                  d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
+                  fill="white"
+                ></path>
+              </svg>
+            </DrawerTrigger>
+            <DrawerContent>
+              <DrawerHeader>
+                <ul className="space-x-4">
+                  {links.map((link) => (
+                    <li key={link.name} className="px-1">
+                      <Link
+                        href={link.href}
+                        className=" hover:text-black transition-colors transform hover:scale-[1.03] transition-transform duration-200 ease-in-out inline-block"
+                      >
+                        {link.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </DrawerHeader>
+            </DrawerContent>
+          </Drawer>
+        </div>
         {/* <Image
           src="https://awareak.org/wp-content/uploads/2023/07/CITYPNG.COMHD-White-Instagram-Round-Logo-Icon-PNG-1600x1200-1.png"
           alt="Instagram"
@@ -75,20 +120,6 @@ export default function RootLayout({
         >
           FreekickClub2024™
         </Link>
-        {/* <nav className="mx-4">
-          <ul className="flex justify-center space-x-4">
-            {links.map((link) => (
-              <li key={link.name} className="px-2">
-                <Link
-                  href={link.href}
-                  className="text-white hover:text-amber-200 transition-colors transform hover:scale-[1.03] transition-transform duration-200 ease-in-out inline-block"
-                >
-                  {link.name}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav> */}
         <Link
           href={
             "https://www.instagram.com/freekickclub_offcl?igsh=MWdlc2VpYXVqdzBweg=="

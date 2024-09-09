@@ -29,16 +29,16 @@ export function News({ items }: NewsProps) {
       {items.map((item) => {
         return (
           <Link href={`/news/${item.attributes.slug}`} key={item.id}>
-            <div className="bg-white shadow-md hover:shadow-lg rounded-lg overflow-hidden flex h-[160px] news-card transition-shadow duration-300 ease-in-out">
+            <div className="bg-white shadow-md hover:shadow-lg rounded-lg overflow-hidden lg:flex lg:h-[160px] news-card transition-shadow duration-300 ease-in-out">
               <Image
                 src={item?.attributes?.main_image?.data?.attributes?.url}
                 alt="freekick-img"
                 width={200}
                 height={150}
-                className="object-cover"
+                className="object-cover w-full"
               />
               <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2">
+                <h3 className="lg:text-xl font-semibold mb-2">
                   {item.attributes.title}
                 </h3>
                 <h5 className="text-xs text-gray-500 mb-2">
