@@ -2,12 +2,14 @@ import { News } from "@/components/News";
 import { fetchAPI } from "@/lib/api";
 
 async function getNews() {
-  return await fetchAPI("/newses", {
-    populate: "main_image",
-    filters: {
-        type: "championsleague",
-      },
-  });
+  return await fetchAPI(
+    "/newses",
+    {
+      populate: "main_image",
+    },
+    {},
+    "championsleague"
+  );
 }
 
 export default async function Home() {

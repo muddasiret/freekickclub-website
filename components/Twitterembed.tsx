@@ -21,7 +21,7 @@ const TwitterEmbed: React.FC<TwitterEmbedProps> = ({ description }) => {
 
   return (
     <div
-      className="text-left"
+      className="text-left mallu"
       dangerouslySetInnerHTML={{
         __html: description,
       }}

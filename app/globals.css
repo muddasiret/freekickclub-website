@@ -4,7 +4,7 @@
 
 @keyframes slide {
   0% {
-    transform: translateX(300%);
+    transform: translateX(350%);
   }
   100% {
     transform: translateX(-70%);
@@ -52,7 +52,7 @@ body {
 }
 
 .news-card:hover img {
-  transform: scale(1.02); /* Zoom in the image */
+  transform: scale(1.05); /* Zoom in the image */
 }
 
 @layer base {
@@ -118,4 +118,8 @@ body {
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.mallu {
+  font-family: var(--font-mallu) !important;
 }

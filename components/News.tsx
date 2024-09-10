@@ -12,6 +12,7 @@ interface AttributeItem {
   main_image: ImageAttribute;
   url: string;
   attributes: AttributeItem;
+  publishedAt: string;
 }
 
 interface NewsItem {
@@ -38,12 +39,21 @@ export function News({ items }: NewsProps) {
                 className="object-cover w-full"
               />
               <div className="p-6">
-                <h3 className="lg:text-xl font-semibold mb-2">
+                <h3 className="lg:text-xl font-semibold mb-2 mallu">
                   {item.attributes.title}
                 </h3>
-                <h5 className="text-xs text-gray-500 mb-2">
-                  {item.attributes.subtitle}
-                </h5>
+                {item?.attributes?.subtitle ? (
+                  <h5 className="text-xs text-gray-500 mb-2">
+                    {item.attributes.subtitle}
+                  </h5>
+                ) : (
+                  <h5 className="text-xs text-gray-500 mb-2 italic">
+                    <span className="italic">PUBLISHED ON: </span>
+                    {new Date(
+                      item.attributes?.publishedAt
+                    ).toLocaleDateString()}
+                  </h5>
+                )}
               </div>
             </div>
           </Link>

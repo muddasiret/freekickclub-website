@@ -1,20 +1,15 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import Image from "next/image";
 import Link from "next/link";
-import {
-  Drawer,
-  DrawerClose,
-  DrawerContent,
-  DrawerDescription,
-  DrawerFooter,
-  DrawerHeader,
-  DrawerTitle,
-  DrawerTrigger,
-} from "@/components/ui/drawer";
+import { Noto_Sans_Malayalam } from "next/font/google";
+import Menu from "@/components/Menu";
 
-const inter = Inter({ subsets: ["latin"] });
+const mallu = Noto_Sans_Malayalam({
+  subsets: ["malayalam"],
+  weight: ["100", "300", "700"],
+  variable: "--font-mallu",
+});
 
 export const metadata: Metadata = {
   title: "Freekick Club",
@@ -35,13 +30,13 @@ export default function RootLayout({
       { name: "Kerala Super League", href: "/news/kerala-super-league" },
       { name: "I-League", href: "/news/i-league" },
       { name: "International", href: "/news/international" },
+      { name: "Other", href: "/news/more" },
     ];
-
     return (
       <div className="bg-black h-20 flex justify-between items-center font-semibold px-5">
         <Link
           href={"/"}
-          className="text-white hover:text-amber-200 transition-colors transform hover:scale-[1.1] transition-transform duration-200 ease-in-out inline-block"
+          className="text-white hover:text-amber-400 transition-colors transform hover:scale-[1.1] transition-transform duration-200 ease-in-out inline-block"
         >
           <Image
             src="/freekicklogo.jpg"
@@ -58,7 +53,7 @@ export default function RootLayout({
               <li key={link.name} className="px-1">
                 <Link
                   href={link.href}
-                  className="text-white hover:text-amber-200 transition-colors transform hover:scale-[1.03] transition-transform duration-200 ease-in-out inline-block"
+                  className="text-white hover:text-amber-300 transition-colors transform hover:scale-[1.03] transition-transform duration-200 ease-in-out inline-block"
                 >
                   {link.name}
                 </Link>
@@ -67,39 +62,7 @@ export default function RootLayout({
           </ul>
         </nav>
         <div className="lg:hidden">
-          <Drawer>
-            <DrawerTrigger>
-              <svg
-                className="hamburgerIcon"
-                xmlns="http://www.w3.org/2000/svg"
-                height="24"
-                viewBox="0 0 24 24"
-                width="24"
-              >
-                <path d="M0 0h24v24H0z" fill="none"></path>
-                <path
-                  d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
-                  fill="white"
-                ></path>
-              </svg>
-            </DrawerTrigger>
-            <DrawerContent>
-              <DrawerHeader>
-                <ul className="space-x-4">
-                  {links.map((link) => (
-                    <li key={link.name} className="px-1">
-                      <Link
-                        href={link.href}
-                        className=" hover:text-black transition-colors transform hover:scale-[1.03] transition-transform duration-200 ease-in-out inline-block"
-                      >
-                        {link.name}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </DrawerHeader>
-            </DrawerContent>
-          </Drawer>
+          <Menu links={links} />
         </div>
         {/* <Image
           src="https://awareak.org/wp-content/uploads/2023/07/CITYPNG.COMHD-White-Instagram-Round-Logo-Icon-PNG-1600x1200-1.png"
@@ -148,7 +111,7 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={mallu.variable}>
         <Header />
         <LiveScoreComingSoon />
         <section className="min-h-[81vh]">{children}</section>

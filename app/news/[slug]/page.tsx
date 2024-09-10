@@ -56,7 +56,7 @@ export default async function NewsArticlePage({ params }: PageProps) {
 
   return (
     <article className="lg:max-w-5xl mx-auto p-4">
-      <h1 className="text-4xl  font-bold mb-4">{attributes.title}</h1>
+      <h1 className="text-4xl  font-bold mb-4 mallu">{attributes.title}</h1>
       <p className="text-gray-600 mb-4">
         Published on: {new Date(attributes?.publishedAt).toLocaleDateString()}
       </p>
